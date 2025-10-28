@@ -16,6 +16,7 @@ public class Main {
         }
     }
 
+    // BMI = weight / (height * height)
     private static float calculateBMI(float weight, float height){
         return weight / (height * height);
     }
