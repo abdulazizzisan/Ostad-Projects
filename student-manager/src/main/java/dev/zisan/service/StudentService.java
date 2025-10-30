@@ -31,15 +31,29 @@ public class StudentService {
         repository.deleteById(id);
     }
 
-    public Student updateStudent(Student student){
-        return repository.save(student);
+    public Student updateStudent(Long id, Student student) {
+        Student st = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No Student found with id: " + id));
+        if (student.getName() != null && !student.getName().isBlank()) {
+            st.setName(student.getName());
+        }
+        if (student.getPhone() != null && !student.getPhone().isBlank()) {
+            st.setPhone(student.getPhone());
+        }
+        if (student.getClassRoll() != 0) {
+            st.setClassRoll(student.getClassRoll());
+        }
+        if (student.getAddress() != null && !student.getAddress().isBlank()) {
+            st.setAddress(student.getAddress());
+        }
+        return repository.save(st);
     }
 
-    public List<Student> getStudentsByAddressContaining(String name){
+    public List<Student> getStudentsByAddressContaining(String name) {
         return repository.findStudentsByAddressContaining(name);
     }
 
-    public Student getStudentByClassRoll(int classRoll){
+    public Student getStudentByClassRoll(int classRoll) {
         return repository.findByClassRoll(classRoll)
                 .orElseThrow(() -> new RuntimeException("No Student found with class roll: " + classRoll));
     }
