@@ -1,0 +1,14 @@
+<Todos>
+    <Todo>
+        <id>1</id>
+        <title>Buy groceries</title>
+    </Todo>
+    <Todo>
+        <id>2</id>
+        <title>Finish Java assignment</title>
+    </Todo>
+    <Todo>
+        <id>3</id>
+        <title>Go for a walk</title>
+    </Todo>
+</Todos>
