@@ -2,7 +2,9 @@ package dev.zisan.b3_secure_note.controller;
 
 import dev.zisan.b3_secure_note.entity.User;
 import dev.zisan.b3_secure_note.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +18,7 @@ public class UserController {
 
     @PostMapping("/register")
     public Map<String, String> register(@RequestBody User user) {
+
         var msg = userService.registerUser(user);
         return Map.of("msg", msg);
     }

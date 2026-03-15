@@ -1,5 +1,6 @@
 package dev.zisan.b3_secure_note.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,9 @@ import java.util.Map;
 public class TestController {
 
     @GetMapping("/ping")
-    public Map<String , String> ping() {
+    public Map<String , String> ping(HttpServletRequest request) {
+        String authorization = request.getHeader("Authorization");
+        System.out.println("Authorization header: " + authorization);
         return Map.of("msg", "pong");
     }
 
